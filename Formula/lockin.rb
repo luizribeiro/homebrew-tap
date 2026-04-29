@@ -1,25 +1,25 @@
 class Lockin < Formula
   desc "Build and run a child process inside an OS sandbox (Linux: syd, macOS: sandbox-exec)."
   homepage "https://github.com/luizribeiro/lab/tree/main/lockin"
-  version "0.3.0"
+  version "0.3.1"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.0/lockin-cli-aarch64-apple-darwin.tar.xz"
-      sha256 "55b37d30c329fdeff17855c4239d5dfde43470abb8eb257262914fd59fe29a01"
+      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.1/lockin-cli-aarch64-apple-darwin.tar.xz"
+      sha256 "c4b21c5aa143a27c53cc56609e8a507d40d17ead703e8e005255f81a3b5e0619"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.0/lockin-cli-x86_64-apple-darwin.tar.xz"
-      sha256 "f425d16fe4a6f143d0208cd3e424acbf467e7f3dddd3df6145c5d4d999dfd2dc"
+      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.1/lockin-cli-x86_64-apple-darwin.tar.xz"
+      sha256 "747598d87abedd31293dfd178ceb865ecc79d5b1c61689c22e00077eb7634a88"
     end
   end
   if OS.linux?
     if Hardware::CPU.arm?
-      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.0/lockin-cli-aarch64-unknown-linux-gnu.tar.xz"
-      sha256 "e0c8538c777d42cc12e35db79787b82c621ba60e3d52a4ba06d65942af988cb2"
+      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.1/lockin-cli-aarch64-unknown-linux-gnu.tar.xz"
+      sha256 "cee7634e38daec302ebcb0068a551b6d2b478f6f7fb26670a6671cf8c0c42766"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.0/lockin-cli-x86_64-unknown-linux-gnu.tar.xz"
-      sha256 "0b8dc9250cd58f06f480f2cb8cbe0d6f34d4972d2f656af3e34683826956c6ac"
+      url "https://github.com/luizribeiro/lab/releases/download/lockin-cli-v0.3.1/lockin-cli-x86_64-unknown-linux-gnu.tar.xz"
+      sha256 "d2786efafbbc624992ea0a2ac59e17a3d608a09d940e9f830d6594fe948e12a9"
     end
   end
   license "MIT"
