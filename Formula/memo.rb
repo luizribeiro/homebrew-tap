@@ -1,15 +1,15 @@
 class Memo < Formula
   desc "Apple Reminders from the command line, from MCP clients, or over HTTP."
   homepage "https://github.com/luizribeiro/lab/tree/main/memo"
-  version "0.3.1"
+  version "0.3.2"
   if OS.mac?
     if Hardware::CPU.arm?
-      url "https://github.com/luizribeiro/lab/releases/download/memo-v0.3.1/memo-aarch64-apple-darwin.tar.xz"
-      sha256 "df3569eacf55bfe1d2f50ebda6153242adcb43089264794e39848356d0aab1a8"
+      url "https://github.com/luizribeiro/lab/releases/download/memo-v0.3.2/memo-aarch64-apple-darwin.tar.xz"
+      sha256 "431f08653377d8b73741798cbb462bee2e3a4bfe7afab45e3e5dc16ddea824d0"
     end
     if Hardware::CPU.intel?
-      url "https://github.com/luizribeiro/lab/releases/download/memo-v0.3.1/memo-x86_64-apple-darwin.tar.xz"
-      sha256 "89c8faff46aa84e6e3e4022d80af8df21f85fe571fc3aa329cc997cf9c27416b"
+      url "https://github.com/luizribeiro/lab/releases/download/memo-v0.3.2/memo-x86_64-apple-darwin.tar.xz"
+      sha256 "9e76f5e573c54f4c6d2a0fa7c994e63da0f491b0335810668a7346da5e5d55c1"
     end
   end
   license "MIT"
