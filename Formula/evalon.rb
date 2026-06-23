@@ -1,24 +1,24 @@
 class Evalon < Formula
   desc "Run sandboxed Luau workflows in microVMs, with built-in coding agents"
   homepage "https://github.com/luizribeiro/lab/tree/main/evalon"
-  version "0.0.1"
+  version "0.0.2"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.1/evalon-macos-arm64.tar.xz"
-      sha256 "c6662705f99cbdd528b3fcf1067490b604e578315275185385d18d417d968e29"
+      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.2/evalon-macos-arm64.tar.xz"
+      sha256 "e5bbb21151a6183b234d7c2f9542f668ca1d951d0a040570e3c8faa6d6c742a3"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.1/evalon-linux-aarch64.tar.xz"
-      sha256 "7c24bddfbea91697dfb0a5311d3425959bf1b53c1a0dd65e6f43394484bfbdec"
+      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.2/evalon-linux-aarch64.tar.xz"
+      sha256 "75d47c23ee8b5263de38e23cc1fc3c51f84b3bbcc506093b3321c1f7475c6720"
     end
     on_intel do
-      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.1/evalon-linux-x86_64.tar.xz"
-      sha256 "107989d5cf40d85d6442b3eb5104c9d4d301239cc96dc2a2010590582f5a0fae"
+      url "https://github.com/luizribeiro/lab/releases/download/evalon-v0.0.2/evalon-linux-x86_64.tar.xz"
+      sha256 "6dc2333db82111931998e684856b2aebdf617e390647cc7b480b969f3de32c1a"
     end
   end
 
