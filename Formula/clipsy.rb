@@ -8,12 +8,6 @@ class Clipsy < Formula
 
   depends_on "rust" => :build
 
-  uses_from_macos "python" => :build
-
-  on_linux do
-    depends_on "libxcb"
-  end
-
   def install
     system "cargo", "install", *std_cargo_args
   end
