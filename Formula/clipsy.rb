@@ -22,6 +22,8 @@ class Clipsy < Formula
     run [opt_bin/"clipsy", "serve"]
     keep_alive true
     process_type :interactive
+    log_path var/"log/clipsy.log"
+    error_log_path var/"log/clipsy.log"
   end
 
   test do
