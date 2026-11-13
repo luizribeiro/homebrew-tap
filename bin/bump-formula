@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -ne 3 ]; then
+  echo "usage: $0 <formula-file> <url> <sha256>" >&2
+  exit 64
+fi
+
+formula=$1
+
+if ! grep -q '^  url "' "$formula" || ! grep -q '^  sha256 "' "$formula"; then
+  echo "error: $formula has no top-level url/sha256 stanza" >&2
+  exit 1
+fi
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+URL=$2 SHA256=$3 awk '
+  !url_done && /^  url "/ { print "  url \"" ENVIRON["URL"] "\""; url_done = 1; next }
+  !sha_done && /^  sha256 "/ { print "  sha256 \"" ENVIRON["SHA256"] "\""; sha_done = 1; next }
+  /^  revision [0-9]+$/ { next }
+  { print }
+' "$formula" > "$tmp"
+cat "$tmp" > "$formula"
