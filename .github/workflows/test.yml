@@ -1,0 +1,31 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test/bump-formula.sh
+
+  formulae:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Install, test and audit every formula
+        run: |
+          brew trust luizribeiro/tap
+          for file in "$(brew --repository luizribeiro/tap)"/Formula/*.rb; do
+            formula="luizribeiro/tap/$(basename "$file" .rb)"
+            brew install --build-from-source "$formula"
+            brew test "$formula"
+            brew audit --strict --online "$formula"
+          done
