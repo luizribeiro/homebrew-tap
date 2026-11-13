@@ -2,7 +2,7 @@ class Clipsy < Formula
   desc "Sync your clipboard across hosts"
   homepage "https://github.com/luizribeiro/clipsy"
   url "https://github.com/luizribeiro/clipsy/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+  sha256 "f69bbc1a1e013f779901724f3bac815df6c3b7a4b86c19d9bd093e354a9ee796"
   license "MIT"
   head "https://github.com/luizribeiro/clipsy.git", branch: "main"
 
