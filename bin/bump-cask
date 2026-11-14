@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -ne 3 ]; then
+  echo "usage: $0 <cask-file> <version> <sha256>" >&2
+  exit 64
+fi
+
+cask=$1
+
+if ! grep -q '^  version "' "$cask" || ! grep -q '^  sha256 "' "$cask"; then
+  echo "error: $cask has no top-level version/sha256 stanza" >&2
+  exit 1
+fi
+
+tmp=$(mktemp)
+trap 'rm -f "$tmp"' EXIT
+VERSION=$2 SHA256=$3 awk '
+  !version_done && /^  version "/ { print "  version \"" ENVIRON["VERSION"] "\""; version_done = 1; next }
+  !sha_done && /^  sha256 "/ { print "  sha256 \"" ENVIRON["SHA256"] "\""; sha_done = 1; next }
+  { print }
+' "$cask" > "$tmp"
+cat "$tmp" > "$cask"

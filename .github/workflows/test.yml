@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: test/bump-formula.sh
+      - run: test/bump-cask.sh
 
   formulae:
     strategy:
@@ -28,4 +29,17 @@ jobs:
             brew install --build-from-source "$formula"
             brew test "$formula"
             brew audit --strict --online "$formula"
+          done
+
+  casks:
+    runs-on: macos-latest
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@63a2d4d8d4193eab3e62b1b782ff3ab8408f5b29 # 2026.11.09.1
+      - name: Install and audit every cask
+        run: |
+          brew trust luizribeiro/tap
+          for file in "$(brew --repository luizribeiro/tap)"/Casks/*.rb; do
+            cask="luizribeiro/tap/$(basename "$file" .rb)"
+            brew install --cask "$cask"
+            brew audit --strict --online --cask "$cask"
           done

@@ -1,0 +1,49 @@
+name: bump-cask
+
+on:
+  workflow_call:
+    inputs:
+      cask:
+        description: Cask name, e.g. weblounge
+        required: true
+        type: string
+      version:
+        description: Version the cask's url template expands, e.g. 0.2.0
+        required: true
+        type: string
+      url:
+        description: Download URL of that version, used only to compute its sha256
+        required: true
+        type: string
+    secrets:
+      tap-token:
+        description: Token with contents:write on luizribeiro/homebrew-tap
+        required: true
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: luizribeiro/homebrew-tap
+          token: ${{ secrets.tap-token }}
+      - name: Update cask to ${{ inputs.version }}
+        env:
+          CASK: ${{ inputs.cask }}
+          VERSION: ${{ inputs.version }}
+          URL: ${{ inputs.url }}
+        run: |
+          sha256=$(curl -fsSL "$URL" | sha256sum | cut -d' ' -f1)
+          bin/bump-cask "Casks/$CASK.rb" "$VERSION" "$sha256"
+          if git diff --quiet; then
+            echo "Casks/$CASK.rb is already at $VERSION"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "$CASK $VERSION"
+          git pull --rebase
+          git push
