@@ -14,6 +14,7 @@ whole tap first with `brew trust luizribeiro/tap`.
 | Formula | Description |
 | --- | --- |
 | [clipsy](https://github.com/luizribeiro/clipsy) | Sync your clipboard across hosts |
+| [louro](https://github.com/luizribeiro/louro) | Let any coding agent act as an IRC bot |
 
 Formulae build from the tagged source release, so the first install
 also pulls in the build toolchain (e.g. `rust`).
