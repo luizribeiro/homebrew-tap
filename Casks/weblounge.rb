@@ -1,6 +1,6 @@
 cask "weblounge" do
-  version "0.1.2"
-  sha256 "3ca91dc74f938d7313ce56adfbcef5eb4e65f5054f5c62289da427c06dd6701f"
+  version "0.1.3"
+  sha256 "6943ef74d5096fe52c0e0739a4967097768f967e338fe2f0e32d3ff129e66125"
 
   url "https://github.com/luizribeiro/weblounge-client/releases/download/desktop-v#{version}/weblounge-#{version}.dmg"
   name "weblounge"
