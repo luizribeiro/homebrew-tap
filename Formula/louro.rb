@@ -1,8 +1,8 @@
 class Louro < Formula
   desc "Let any coding agent act as an IRC bot"
   homepage "https://github.com/luizribeiro/louro"
-  url "https://github.com/luizribeiro/louro/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "fa2730bdc25ce2e379609a82396d53ce3b11a2be437be960fa51e3bea276e4a2"
+  url "https://github.com/luizribeiro/louro/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "0a60cc9cebd319e4a3ebc887debab1e488b40185f28b2f744837f5d89338a124"
   license any_of: ["MIT", "Apache-2.0"]
   head "https://github.com/luizribeiro/louro.git", branch: "main"
 
